@@ -14,11 +14,13 @@ app.get('/api/messages', (req, res) => {
 });
 
 app.post('/api/messages', (req, res) => {
-  const newMessage = req.body.message;
-  messages.push(newMessage);
-  res.json({ success: true });
-});
+    const { username,profilePicUrl , message , timestamp , date } = req.body;
+    const newMessage = { username, message, profilePicUrl , timestamp , date}; // Include the profilePicUrl in the message object
+    messages.push(newMessage);
+    res.json({ success: true });
+  });
+  
 
-app.listen(port, () => {
+app.listen(port , () => {
   console.log(`Server is running on port ${port}`);
 });
